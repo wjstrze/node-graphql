@@ -1,19 +1,19 @@
 const { PostTC, PostSchema } = require("../model/post");
 
-PostTC.addResolver({
-  name: "create",
-  kind: "mutation",
-  type: PostTC.getResolver("createOne").getType(),
-  args: PostTC.getResolver("createOne").getArgs(),
-  resolve: async ({ source, args, context, info }) => {
-    const post = await PostSchema.create(args.record);
+// PostTC.addResolver({
+//   name: "create",
+//   kind: "mutation",
+//   type: PostTC.getResolver("createOne").getType(),
+//   args: PostTC.getResolver("createOne").getArgs(),
+//   resolve: async ({ source, args, context, info }) => {
+//     const post = await PostSchema.create(args.record);
 
-    return {
-      record: post,
-      recordId: PostTC.getRecordIdFn()(post),
-    };
-  },
-});
+//     return {
+//       record: post,
+//       recordId: PostTC.getRecordIdFn()(post),
+//     };
+//   },
+// });
 
 const PostQuery = {
   postById: PostTC.getResolver("findById"),
@@ -26,7 +26,7 @@ const PostQuery = {
 };
 
 const PostMutation = {
-  postWithFile: PostTC.getResolver("create"),
+  // postWithFile: PostTC.getResolver("create"),
   postCreateOne: PostTC.getResolver("createOne"),
   postCreateMany: PostTC.getResolver("createMany"),
   postUpdateById: PostTC.getResolver("updateById"),

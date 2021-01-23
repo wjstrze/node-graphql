@@ -17,7 +17,8 @@ const extensions = ({ context }) => {
 
 app.listen(5000, async () => {
   console.log("server is running ", 5000);
-    await mongoose.connect(connection_string, {    
+  await mongoose.connect(connection_string, {    
+    dbName: 'test-1',
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

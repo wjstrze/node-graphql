@@ -7,7 +7,8 @@ resolver.fakeData = BlogTC.addResolver({
   type: BlogTC,
   args: { record: BlogTC.getInputType() },
   resolve: async ({ source, args }) => {
-      let blog = new BlogSchema({
+    const blog = new BlogSchema({
+        id: faker.random.uuid(),
         name: faker.name.firstName()
     //   name: faker.name.findName(),
     //   email: faker.internet.email(),

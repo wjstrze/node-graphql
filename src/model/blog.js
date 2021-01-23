@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const blog = new Schema(
   {
-    id: String,
     name: String,
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
   },
