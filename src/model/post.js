@@ -1,17 +1,24 @@
 const mongoose = require("mongoose");
-const { composeWithMongoose } = require("graphql-compose-mongoose");
-const Schema = mongoose.Schema;
+const { composeMongoose } = require("graphql-compose-mongoose");
 
-const post = new Schema(
+const { BlogSchema } = require("./blog");
+
+ const PostSchema = new mongoose.Schema(
   {
     title: String,
-    blog: [{ type: Schema.Types.ObjectId, ref: 'Blog' }]
-    
+    postBlogId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }],
+    blog: {
+    type: [BlogSchema], 
+  },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
-);
+ );
+
+const PostModel = mongoose.model("Post", PostSchema)
+ const PostTC = composeMongoose(PostModel)
 
 module.exports = {
-  PostSchema: mongoose.model("Post", post),
-  PostTC: composeWithMongoose(mongoose.model("Post", post)),
+  PostModel,
+  PostTC,
+  PostSchema
 };

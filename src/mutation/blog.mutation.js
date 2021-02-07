@@ -1,5 +1,5 @@
 const faker = require("faker");
-const { BlogSchema, BlogTC } = require("../model/blog");
+const { BlogModel, BlogTC } = require("../model/blog");
 
 const resolver = function () {};
 resolver.fakeData = BlogTC.addResolver({
@@ -7,7 +7,7 @@ resolver.fakeData = BlogTC.addResolver({
   type: BlogTC,
   args: { record: BlogTC.getInputType() },
   resolve: async ({ source, args }) => {
-    const blog = new BlogSchema({
+    const blog = new BlogModel({
         id: faker.random.uuid(),
         name: faker.name.firstName()
     //   name: faker.name.findName(),
