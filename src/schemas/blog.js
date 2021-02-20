@@ -19,7 +19,7 @@ const { BlogTC } = require("../model/blog");
 const BlogQuery = {
   // blogById: BlogTC.getResolver("findById"),
   // blogByIds: BlogTC.getResolver("findByIds"),
-  blogOne: BlogTC.mongooseResolvers.findOne(),
+  //blogOne: BlogTC.mongooseResolvers.findOne(),
   blogMany: BlogTC.mongooseResolvers.findMany(),
   // blogCount: BlogTC.getResolver("count"),
    blogConnection: BlogTC.mongooseResolvers.connection()
@@ -29,7 +29,7 @@ const BlogQuery = {
 const BlogMutation = {
   // blogWithFile: BlogTC.getResolver("create"),
    blogCreateOne: BlogTC.mongooseResolvers.createOne(),
-   blogCreateMany: BlogTC.mongooseResolvers.createMany()
+  // blogCreateMany: BlogTC.mongooseResolvers.createMany()
   // blogUpdateById: BlogTC.getResolver("updateById"),
   // blogUpdateOne: BlogTC.getResolver("updateOne"),
   // blogUpdateMany: BlogTC.getResolver("updateMany"),

@@ -13,7 +13,6 @@ const BlogSchema = new mongoose.Schema(
 const BlogModel = mongoose.model("Blog", BlogSchema)
 const BlogTC = composeMongoose(BlogModel)
 
-
 BlogTC.addRelation(
   'posts',
   {
@@ -29,13 +28,6 @@ BlogTC.addRelation(
     },
   }
 );
-
-// BlogTC.addFields({
-//   posts: {
-//     type: ['Post'],
-//     resolve: async (source, args, context, info) => { return DB.find(); }
-//   },
-// });
 
 module.exports = {
   BlogModel,

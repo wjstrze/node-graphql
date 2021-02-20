@@ -1,9 +1,8 @@
-const { SchemaComposer } = require( 'graphql-compose');
+const { SchemaComposer } = require('graphql-compose');
+const { BlogMutation, BlogQuery } = require ('./blog');
+const { PostMutation, PostQuery } = require ('./post');
 
 const schemaComposer = new SchemaComposer();
-
-const { BlogMutation, BlogQuery } =require ('./blog');
-const { PostMutation, PostQuery } =require ('./post');
 
 schemaComposer.Query.addFields({
     ...BlogQuery,

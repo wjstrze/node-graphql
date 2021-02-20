@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { composeMongoose } = require("graphql-compose-mongoose");
 
-const { BlogTC, BlogModel, BlogSchema } = require("./blog")
+const { BlogTC } = require("./blog.js");
 
  const PostSchema = new mongoose.Schema(
    {
@@ -16,26 +16,15 @@ const { BlogTC, BlogModel, BlogSchema } = require("./blog")
 const PostModel = mongoose.model("Post", PostSchema)
 const PostTC = composeMongoose(PostModel)
 
-console.log('BlogTC :>> ', BlogTC);
-console.log('BlogModel :>> ', BlogModel);
-console.log('BlogSchema :>> ', BlogSchema);
-
-// PostTC.addFields({
-//   blog: {
-//     type: 'Blog',
-//     resolve: post => find(blogs, { _id: post.postBlogId }),
-//   },
-// });
-
-// PostTC.addRelation(
-//   'blog',
-//   {
-//     resolver: () => BlogTC.mongooseResolvers.findById(),
-//     prepareArgs: {
-//      _id: source => source.postBlogId
-//     },
-//   }
-// );
+PostTC.addRelation(
+  'blog',
+  {
+    resolver: () => BlogTC.mongooseResolvers.findById(),
+    prepareArgs: {
+     _id: source => source.postBlogId
+    },
+  }
+);
 
 module.exports = {
   PostModel,
