@@ -1,5 +1,5 @@
 const { BlogTC } = require("../model/blog");
-require("../mutation/blog.mutation");
+// require("../mutation/blog.mutation");
 
 // BlogTC.addResolver({
 //   name: "create",
@@ -19,17 +19,17 @@ require("../mutation/blog.mutation");
 const BlogQuery = {
   // blogById: BlogTC.getResolver("findById"),
   // blogByIds: BlogTC.getResolver("findByIds"),
-  // blogOne: BlogTC.getResolver("findOne"),
+  blogOne: BlogTC.mongooseResolvers.findOne(),
   blogMany: BlogTC.mongooseResolvers.findMany(),
   // blogCount: BlogTC.getResolver("count"),
-  // blogConnection: BlogTC.getResolver("connection"),
+   blogConnection: BlogTC.mongooseResolvers.connection()
   // blogPagination: BlogTC.getResolver("pagination"),
 };
 
 const BlogMutation = {
   // blogWithFile: BlogTC.getResolver("create"),
    blogCreateOne: BlogTC.mongooseResolvers.createOne(),
-  // blogCreateMany: BlogTC.getResolver("createMany"),
+   blogCreateMany: BlogTC.mongooseResolvers.createMany()
   // blogUpdateById: BlogTC.getResolver("updateById"),
   // blogUpdateOne: BlogTC.getResolver("updateOne"),
   // blogUpdateMany: BlogTC.getResolver("updateMany"),

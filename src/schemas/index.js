@@ -1,6 +1,5 @@
 const { SchemaComposer } = require( 'graphql-compose');
 
-
 const schemaComposer = new SchemaComposer();
 
 const { BlogMutation, BlogQuery } =require ('./blog');

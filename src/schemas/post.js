@@ -1,4 +1,4 @@
-const { PostTC, PostSchema } = require("../model/post");
+const { PostTC } = require("../model/post");
 
 // PostTC.addResolver({
 //   name: "create",
@@ -21,7 +21,7 @@ const PostQuery = {
   // postOne: PostTC.getResolver("findOne"),
    postMany: PostTC.mongooseResolvers.findMany(),
   // postCount: PostTC.getResolver("count"),
-  // postConnection: PostTC.getResolver("connection"),
+   postConnection: PostTC.mongooseResolvers.connection(),
   // postPagination: PostTC.getResolver("pagination"),
 };
 
